@@ -4,7 +4,7 @@ import static meindratheal.common.base.Preconditions.*;
 
 /**
  * A single piece on the grid. A piece can have many <em>orientations</em>,
- * which can be cycled through using  {@link #currentOrientation() currentOrientation},
+ * which can be cycled through using null {@link #currentOrientation() currentOrientation},
  * {@link #numOrientations() numOrientations},
  * {@link #nextOrientation() nextOrientation},
  * {@link #prevOrientation() prevOrientation}, and
@@ -59,4 +59,19 @@ public abstract class Piece
 	 * {@code orientation >= }{@link #numOrientations() numOrientations()}.
 	 */
 	public abstract void setOrientation(int orientation);
+
+	/**
+	 * Gets the number of connections emanating from this piece.
+	 * @return The number of connections.
+	 */
+	public abstract int numConnections();
+
+	/**
+	 * Checks if this piece has a connection emanating from it in the given
+	 * direction in its current orientation.
+	 * @param dir The direction to check.
+	 * @return True if there is a connection in the given direction, false
+	 * otherwise.
+	 */
+	public abstract boolean hasConnection(final ConnectionDirection dir);
 }
