@@ -74,4 +74,22 @@ public abstract class Piece
 	 * otherwise.
 	 */
 	public abstract boolean hasConnection(final ConnectionDirection dir);
+
+	@Override
+	public final boolean equals(final Object obj)
+	{
+		if(obj instanceof Piece)
+		{
+			final Piece other = (Piece) obj;
+			return this.type() == other.type()
+					&& this.currentOrientation() == other.currentOrientation();
+		}
+		return false;
+	}
+
+	@Override
+	public final int hashCode()
+	{
+		return type().hashCode() * 17 + currentOrientation();
+	}
 }
